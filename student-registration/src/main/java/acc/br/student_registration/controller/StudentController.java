@@ -56,20 +56,17 @@ public class StudentController {
     @PostMapping("/student/confirm")
     public String confirmRegistration(@ModelAttribute("registrationData") StudentRegistrationDTO registrationDto, Model model) {
         Student saved = studentService.createStudent(registrationDto);
-        // limpando dados de sessão:
         model.addAttribute("registrationData", new StudentRegistrationDTO());
         return "success";
     }
 
     @PostMapping("/student/edit")
     public String editRegistration(@ModelAttribute("registrationData") StudentRegistrationDTO registrationDto, Model model) {
-        // Apenas retorna ao form com os dados já no registrationDto
         return "form";
     }
 
     @PostMapping("/student/cancel")
     public String cancelRegistration(Model model) {
-        // Limpa o DTO
         model.addAttribute("registrationData", new StudentRegistrationDTO());
         return "form";
     }
